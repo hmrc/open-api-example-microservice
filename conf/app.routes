@@ -1,3 +1,3 @@
 # microservice specific routes
 
-GET        /hello-world             uk.gov.hmrc.openapiexamplemicroservice.controllers.MicroserviceHelloWorldController.hello
+GET        /world             uk.gov.hmrc.openapiexamplemicroservice.controllers.MicroserviceHelloWorldController.hello
