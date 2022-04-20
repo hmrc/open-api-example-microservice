@@ -1,0 +1,82 @@
+
+openapi: "3.0.3"
+
+info:
+  version: 1.0.0
+  title: OpenAPI Example
+  description: |
+    # Overview
+    This is an example API that allows software developers to test that their applications can connect with the HMRC API Platform. It also acts as a hands-on tutorial for developers to get started with HMRC APIs.
+  
+servers:
+- url: https://test-api.service.hmrc.gov.uk
+  description: Sandbox
+- url: https://api.service.hmrc.gov.uk/
+  description: Production
+
+components:
+  responses:
+    badOrExpiredTokenResponse:
+      description: |
+        Bad or expired token.
+        This can happen if the user or HMRC revoked or expired an access token.
+        To fix, you should re-authenticate the user.
+      content:
+        application/json:
+          example:
+    forbiddenResponse:
+      description: |
+        Bad OAuth request (wrong consumer key, bad nonce, expired
+        timestamp...). Unfortunately, re-authenticating the user won't help here.
+      content:
+        application/json:
+          example:
+  parameters:
+    acceptHeader:
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum: [
+          "application/vnd.hmrc.1.0+json",
+          "application/vnd.hmrc.1.0+xml"
+        ]
+      required: true
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: HMRC supports OAuth 2.0 for authenticating User-restricted API requests
+      flows: 
+        authorizationCode:
+          authorizationUrl: https://api.service.hmrc.gov.uk/oauth/authorize
+          tokenUrl: https://api.service.hmrc.gov.uk/oauth/token
+          refreshUrl: https://api.service.hmrc.gov.uk/oauth/refresh
+          scopes:
+            read:hello: access hello user
+    serverTokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: HMRC Server token
+      description: HMRC supports http bearer token authenticating application-restricted API requests
+
+paths:
+  /world:
+    get:
+      summary: Say hello word
+      description: |
+        A simple example for integrating with an unrestricted service.
+
+        Any request to this endpoint initiates a 'Hello World' response.
+      tags:
+      - open-api-example-microservice
+      parameters:
+      - $ref: '#/components/parameters/acceptHeader'
+      responses:
+        200:
+          description: "OK Response"
+          content:
+            application/json:
+              example: 
+                {
+                  "message" : "Hello World"
+                }
