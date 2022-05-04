@@ -8,7 +8,16 @@
       {
         "version": "1.0",
         "status": "STABLE",
-        "endpointsEnabled": true
+        "endpointsEnabled": true,
+        "endpoints" : [
+          {
+            "uriPattern" : "/world",
+            "endpointName": "Say Hello World",
+            "method" : "GET",
+            "authType" : "NONE",
+            "throttlingTier" : "UNLIMITED"
+          }
+        ]
       }
     ]
   }
