@@ -17,15 +17,23 @@
 package uk.gov.hmrc.openapiexamplemicroservice.controllers
 
 import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
-import play.api.mvc.{Action, AnyContent, ControllerComponents}
+import play.api.mvc.ControllerComponents
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton()
-class MicroserviceHelloWorldController @Inject()(cc: ControllerComponents)
+class HelloController @Inject()(cc: ControllerComponents)
     extends BackendController(cc) {
 
-  def hello(): Action[AnyContent] = Action.async { implicit request =>
+  def world = Action.async {
     Future.successful(Ok("Hello World"))
+  }
+
+  def application = Action.async {
+    Future.successful(Ok("Hello Application"))
+  }
+
+  def user = Action.async {
+    Future.successful(Ok("Hello User"))
   }
 }
