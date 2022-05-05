@@ -3,7 +3,7 @@
   "api": {
     "name": "Open API Example",
     "description": "An example of an API specified using OpenAPI and published on the HMRC API Developer Hub.",
-    "context": "openapi-hello",
+    "context": "test/openapi-hello",
     "versions": [
       {
         "version": "1.0",
