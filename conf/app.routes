@@ -1,3 +1,5 @@
 # microservice specific routes
 
-GET        /world             uk.gov.hmrc.openapiexamplemicroservice.controllers.MicroserviceHelloWorldController.hello
+GET        /world             uk.gov.hmrc.openapiexamplemicroservice.controllers.HelloController.world
+GET        /application       uk.gov.hmrc.openapiexamplemicroservice.controllers.HelloController.application
+GET        /user              uk.gov.hmrc.openapiexamplemicroservice.controllers.HelloController.user

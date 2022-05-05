@@ -43,7 +43,7 @@ components:
         ]
       required: true
   securitySchemes:
-    oauth2:
+    userScheme:
       type: oauth2
       description: HMRC supports OAuth 2.0 for authenticating User-restricted API requests
       flows: 
@@ -52,7 +52,14 @@ components:
           tokenUrl: https://api.service.hmrc.gov.uk/oauth/token
           refreshUrl: https://api.service.hmrc.gov.uk/oauth/refresh
           scopes:
-            read:hello: access hello user
+            hello: access hello user
+    appScheme:
+      type: oauth2
+      description: HMRC supports OAuth 2.0 for authenticating app-restricted API requests
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.service.hmrc.gov.uk/oauth/token
+          scopes: {}
 paths:
   /world:
     get:
@@ -74,3 +81,68 @@ paths:
                 {
                   "message" : "Hello World"
                 }
+  /application:
+    get:
+      summary: Say hello application
+      description: |
+        A simple example for integrating with an application-restricted service, using an OAuth 2.0 client_credentials grant type.
+
+        Any authorised request to this endpoint initiates a 'Hello Application' response.
+      tags:
+      - open-api-example-microservice
+      parameters:
+      - $ref: '#/components/parameters/acceptHeader'
+      responses:
+        200:
+          description: "OK Response"
+          content:
+            application/json:
+              example:
+                {
+                  "message" : "Hello Application"
+                }
+        401:
+          description: "UNAUTHORISED Response"
+          content:
+            application/json:
+              example: 
+                {
+                  "code": "MISSING_CREDENTIALS",
+                  "message": "Authentication information is not provided"
+                }
+      security:
+      - appScheme: []
+
+  /user:
+    get:
+      summary: Say hello user
+      description: |
+        A simple example for integrating with a user-restricted service, using an OAuth 2.0 authorization_code grant type.
+
+        Any authorised request to this endpoint initiates a 'Hello User' response.
+      tags:
+      - open-api-example-microservice
+      parameters:
+      - $ref: '#/components/parameters/acceptHeader'
+      responses:
+        200:
+          description: "OK Response"
+          content:
+            application/json:
+              example: 
+                {
+                  "message" : "Hello User"
+                }
+        401:
+          description: "UNAUTHORISED Response"
+          content:
+            application/json:
+              example: 
+                {
+                  "code": "MISSING_CREDENTIALS",
+                  "message": "Authentication information is not provided"
+                }
+      security:
+      - userScheme:
+        - hello
+        
