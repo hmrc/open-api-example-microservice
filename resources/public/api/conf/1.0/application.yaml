@@ -53,12 +53,6 @@ components:
           refreshUrl: https://api.service.hmrc.gov.uk/oauth/refresh
           scopes:
             read:hello: access hello user
-    serverTokenAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: HMRC Server token
-      description: HMRC supports http bearer token authenticating application-restricted API requests
-
 paths:
   /world:
     get:
