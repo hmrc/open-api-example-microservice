@@ -81,6 +81,12 @@ paths:
           description: "OK Response"
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: the message contents
               example: 
                 {
                   "message" : "Hello World"
@@ -101,6 +107,12 @@ paths:
           description: "OK Response"
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: the message contents
               example:
                 {
                   "message" : "Hello Application"
@@ -109,6 +121,15 @@ paths:
           description: "UNAUTHORISED Response"
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: the error code
+                  message:
+                    type: string
+                    description: the error description
               example: 
                 {
                   "code": "MISSING_CREDENTIALS",
