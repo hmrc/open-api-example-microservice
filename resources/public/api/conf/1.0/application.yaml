@@ -77,6 +77,12 @@ paths:
           description: "OK Response"
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: the message contents
               example: 
                 {
                   "message" : "Hello World"
