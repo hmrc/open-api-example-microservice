@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.openapiexamplemicroservice.controllers
 
-import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
-import play.api.mvc.ControllerComponents
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
+import play.api.mvc.ControllerComponents
+import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
+
 @Singleton()
-class HelloController @Inject()(cc: ControllerComponents)
+class HelloController @Inject() (cc: ControllerComponents)
     extends BackendController(cc) {
 
   def world = Action.async {

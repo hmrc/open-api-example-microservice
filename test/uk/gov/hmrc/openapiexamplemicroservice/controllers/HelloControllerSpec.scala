@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package uk.gov.hmrc.openapiexamplemicroservice.controllers
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+
 import play.api.http.Status
 import play.api.test.Helpers._
 import play.api.test.{FakeRequest, Helpers}
@@ -25,7 +26,7 @@ import play.api.test.{FakeRequest, Helpers}
 class HelloControllerSpec extends AnyWordSpec with Matchers {
 
   private val fakeRequest = FakeRequest("GET", "/")
-  private val controller = new HelloController(Helpers.stubControllerComponents())
+  private val controller  = new HelloController(Helpers.stubControllerComponents())
 
   "GET /" should {
     "return 200" in {
