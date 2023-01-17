@@ -16,10 +16,11 @@
 
 package uk.gov.hmrc.openapiexamplemicroservice.controllers
 
-import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
-import play.api.mvc.ControllerComponents
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
+
+import play.api.mvc.ControllerComponents
+import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
 
 @Singleton()
 class HelloController @Inject() (cc: ControllerComponents)
