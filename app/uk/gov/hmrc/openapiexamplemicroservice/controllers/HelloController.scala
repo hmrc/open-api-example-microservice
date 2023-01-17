@@ -22,7 +22,7 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton()
-class HelloController @Inject()(cc: ControllerComponents)
+class HelloController @Inject() (cc: ControllerComponents)
     extends BackendController(cc) {
 
   def world = Action.async {
