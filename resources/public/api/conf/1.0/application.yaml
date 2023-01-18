@@ -88,6 +88,8 @@ paths:
                 {
                   "message" : "Hello World"
                 }
+      security:
+      - {}
   /application:
     get:
       summary: Say hello application
