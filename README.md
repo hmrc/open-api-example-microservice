@@ -3,6 +3,7 @@
 
 This is an API example to test the API platform.
 It has 3 endpoints, one for each level of authorisation (open, application-restricted and user-restricted).
+Version 2.0 of this API uses multi-file OAS specification.
 
 ## hello-world
 This is an open resource (hence it doesn't require any type of authorisation)
