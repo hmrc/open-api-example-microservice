@@ -7,7 +7,7 @@ get:
   tags:
     - open-api-example-microservice
   parameters:
-    - $ref: '#/components/parameters/acceptHeader'
+    - $ref: './endpoints/parameters/accept_header.yaml#/components/parameters/acceptHeader'
   responses:
     200:
       description: "OK Response"
