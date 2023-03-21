@@ -64,7 +64,7 @@ components:
 paths:
   /world:
     get:
-      summary: Say hello word
+      summary: Say hello world
       description: |
         A simple example for integrating with an unrestricted service.
 
@@ -75,7 +75,7 @@ paths:
       - $ref: '#/components/parameters/acceptHeader'
       responses:
         200:
-          description: "OK Response"
+          description: "OK"
           content:
             application/json:
               schema:
@@ -103,7 +103,7 @@ paths:
       - $ref: '#/components/parameters/acceptHeader'
       responses:
         200:
-          description: "OK Response"
+          description: "OK"
           content:
             application/json:
               schema:
@@ -117,7 +117,7 @@ paths:
                   "message" : "Hello Application"
                 }
         401:
-          description: "UNAUTHORISED Response"
+          description: "UNAUTHORISED"
           content:
             application/json:
               schema:
@@ -150,18 +150,33 @@ paths:
       - $ref: '#/components/parameters/acceptHeader'
       responses:
         200:
-          description: "OK Response"
+          description: "OK"
           content:
             application/json:
-              example: 
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: the message contents
+              example:
                 {
                   "message" : "Hello User"
                 }
         401:
-          description: "UNAUTHORISED Response"
+          description: "UNAUTHORISED"
           content:
             application/json:
-              example: 
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: the error code
+                  message:
+                    type: string
+                    description: the error description
+              example:
                 {
                   "code": "MISSING_CREDENTIALS",
                   "message": "Authentication information is not provided"

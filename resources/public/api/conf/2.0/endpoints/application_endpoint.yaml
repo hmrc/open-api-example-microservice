@@ -7,10 +7,10 @@ get:
   tags:
     - open-api-example-microservice
   parameters:
-    - $ref: './endpoints/parameters/accept_header.yaml#/components/parameters/acceptHeader'
+    - $ref: './parameters/accept_header.yaml#/components/parameters/acceptHeader'
   responses:
     200:
-      description: "OK Response"
+      description: "OK"
       content:
         application/json:
           schema:
@@ -22,7 +22,7 @@ get:
           example:
             $ref: "./examples/success/hello_application.json"
     401:
-      description: "UNAUTHORISED Response"
+      description: "UNAUTHORISED"
       content:
         application/json:
           schema:
