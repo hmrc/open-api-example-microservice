@@ -53,10 +53,10 @@ components:
           scopes: { }
 paths:
   /world:
-    $ref: "./endpoints/world_endpoint.yaml"
+    $ref: "./world_endpoint.yaml"
 
   /application:
-    $ref: "./endpoints/application_endpoint.yaml"
+    $ref: "./application_endpoint.yaml"
 
   /user:
-    $ref: "./endpoints/user_endpoint.yaml"
+    $ref: "./user_endpoint.yaml"
