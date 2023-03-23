@@ -1,16 +1,16 @@
 get:
-  summary: Say hello application
+  summary: Say hello user
   description: |
-    A simple example for integrating with an application-restricted service, using an OAuth 2.0 client_credentials grant type.
+    A simple example for integrating with a user-restricted service, using an OAuth 2.0 authorization_code grant type.
     
-    Any authorised request to this endpoint initiates a 'Hello Application' response.
+    Any authorised request to this endpoint initiates a 'Hello User' response.
   tags:
     - open-api-example-microservice
   parameters:
-    - $ref: './endpoints/parameters/accept_header.yaml#/components/parameters/acceptHeader'
+    - $ref: './parameters/accept_header.yaml#/components/parameters/acceptHeader'
   responses:
     200:
-      description: "OK Response"
+      description: "OK"
       content:
         application/json:
           schema:
@@ -20,9 +20,10 @@ get:
                 type: string
                 description: the message contents
           example:
-            $ref: "./examples/success/hello_application.json"
+            $ref: "./examples/success/hello_user.json"
+
     401:
-      description: "UNAUTHORISED Response"
+      description: "UNAUTHORISED"
       content:
         application/json:
           schema:
@@ -30,4 +31,5 @@ get:
           example:
             $ref: "./examples/errors/missing_credentials.json"
   security:
-    - applicationRestricted: []
+    - userRestricted:
+        - hello
