@@ -117,7 +117,7 @@ paths:
                   "message" : "Hello Application"
                 }
         401:
-          description: "UNAUTHORISED"
+          description: "Unauthorised"
           content:
             application/json:
               schema:
@@ -164,7 +164,7 @@ paths:
                   "message" : "Hello User"
                 }
         401:
-          description: "UNAUTHORISED"
+          description: "Unauthorised"
           content:
             application/json:
               schema:

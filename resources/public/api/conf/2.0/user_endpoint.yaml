@@ -23,7 +23,7 @@ get:
             $ref: "./examples/success/hello_user.json"
 
     401:
-      description: "UNAUTHORISED"
+      description: "Unauthorised"
       content:
         application/json:
           schema:
