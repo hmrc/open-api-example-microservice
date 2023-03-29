@@ -3,34 +3,16 @@ import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "open-api-example-microservice"
 
-val silencerVersion = "1.7.7"
+scalaVersion := "2.13.8"
 
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
-
 ThisBuild / evictionWarningOptions := EvictionWarningOptions.default.withWarnScalaVersionEviction(false)
-
-inThisBuild(
-  List(
-    scalaVersion := "2.12.15",
-    semanticdbEnabled := true,
-    semanticdbVersion := scalafixSemanticdb.revision
-  )
-)
 
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin)
   .settings(
     majorVersion                     := 0,
-    scalaVersion                     := "2.12.15",
-    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
-    // ***************
-    // Use the silencer plugin to suppress warnings
-    scalacOptions += "-P:silencer:pathFilters=routes",
-    libraryDependencies ++= Seq(
-      compilerPlugin("com.github.ghik" % "silencer-plugin" % silencerVersion cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % silencerVersion % Provided cross CrossVersion.full
-    )
-    // ***************
+    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test
   )
   .settings(publishingSettings: _*)
   .configs(IntegrationTest)
@@ -39,4 +21,12 @@ lazy val microservice = Project(appName, file("."))
   .settings(CodeCoverageSettings.settings: _*)
   .settings(
     Compile / unmanagedResourceDirectories += baseDirectory.value / "resources",
+  )
+  .settings(
+    scalacOptions ++= Seq(
+      "-Wconf:cat=unused&src=views/.*\\.scala:s",
+      "-Wconf:cat=unused&src=.*RoutesPrefix\\.scala:s",
+      "-Wconf:cat=unused&src=.*Routes\\.scala:s",
+      "-Wconf:cat=unused&src=.*ReverseRoutes\\.scala:s"
+    )
   )
