@@ -6,8 +6,6 @@ val appName = "open-api-example-microservice"
 scalaVersion := "2.13.12"
 
 ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
-ThisBuild / semanticdbEnabled                                    := true
-ThisBuild / semanticdbVersion                                    := scalafixSemanticdb.revision
 ThisBuild / evictionWarningOptions                               := EvictionWarningOptions.default.withWarnScalaVersionEviction(false)
 
 lazy val microservice = Project(appName, file("."))
