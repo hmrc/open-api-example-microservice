@@ -54,7 +54,6 @@ See definition in `/resources/public/api/definition.json` for the format.
 # Run tests
 ```
 sbt test
-sbt it:test
 ```
 
 # Run locally
