@@ -32,4 +32,4 @@ get:
             $ref: "./examples/errors/missing_credentials.json"
   security:
     - userRestricted:
-        - hello
+        - iDontExist
