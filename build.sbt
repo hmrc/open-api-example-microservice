@@ -10,21 +10,20 @@ lazy val microservice = Project(appName, file("."))
   .enablePlugins(PlayScala, SbtDistributablesPlugin)
   .disablePlugins(JUnitXmlReportPlugin)
   .settings(
-    libraryDependencies ++= AppDependencies.compile ++ AppDependencies.test
+    libraryDependencies ++= AppDependencies.compile ++ AppDependencies.test,
+    retrieveManaged := true
   )
-  .settings(resolvers += Resolver.jcenterRepo)
-  .settings(CodeCoverageSettings.settings: _*)
+  .settings(CodeCoverageSettings.settings)
   .settings(
     Compile / unmanagedResourceDirectories += baseDirectory.value / "resources"
   )
   .settings(
     scalacOptions ++= Seq(
-      "-Wconf:cat=unused&src=views/.*\\.scala:s",
-      "-Wconf:cat=unused&src=.*RoutesPrefix\\.scala:s",
-      "-Wconf:cat=unused&src=.*Routes\\.scala:s",
-      "-Wconf:cat=unused&src=.*ReverseRoutes\\.scala:s"
+      // https://www.scala-lang.org/2021/01/12/configuring-and-suppressing-warnings.html
+      // suppress warnings in generated routes files
+      "-Wconf:src=routes/.*:s"
     )
-  )  
+  )
 
 commands ++= Seq(
   Command.command("run-all-tests") { state => "test" :: state },
